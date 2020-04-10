@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{%block styles%}
+<link rel="stylesheet" type="text/css" href="/static/css/ratingbar_styles.css">
+{%endblock%}
+{% block content %}
+<div class="container"> 
+{% if myrestaurants %}
+	 	<form action="{{url_for('showRestaurantByLocation')}}" method="POST"> 
+          <div class="row">
+            <div class="col-md-6" style="margin-bottom: 30px;" >
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter Location" id="txtSearch" name="location" />
+                <div class="input-group-btn">
+                  <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </form>
+    <div class="row">
+          {% for restaurant,rating in myrestaurants %}
+          <div class="card col-sm-3" style="width: 18rem;">
+              <img src="/static/upload_files/{{restaurant.image }}" style="width:270px;height:200px;" class="card-img-top" alt="/static/upload_files/{{restaurant.image}}">
+              <div class="card-body">
+                  <a href="{{url_for('restaurantdetails',rest_id=restaurant.id)}}"><h4 class="card-title">{{ restaurant.name }}</h4></a>
+                  {%if rating>0%}
+                  <h5 class="card-title">{{'%.1f' % rating}}</h5>
+                  <!-- {% for i in range(round(rating)) %}
+                  <span class="fa fa-star checked"></span>
+                  {%endfor%}
+                  {% for i in range(5-round(rating)) %}
+                  <span class="fa fa-star"></span>
+                  {%endfor%} -->
+                  <!-- <h2><em>Method 1)</em> Pure CSS/Unicode (100% rating)</h2> -->
+                  <div class="containerdiv">
+                      <div>
+                        <img src="https://image.ibb.co/jpMUXa/stars_blank.png" alt="img" style="max-width: 100px;" >
+                      </div>
+                      <div class="cornerimage" style="width:{{rating*20}}%;" >
+                        <img src="https://image.ibb.co/caxgdF/stars_full.png" alt="" class="rating-img" style="max-width: 100px;">
+                      </div>
+                  </div>
+                  {%endif%}
+                  <br>
+                  <h5 class="card-title">{{ restaurant.location }}</h5>
+                  {%if current_user.id == restaurant.owner.id%}
+                  <a href="{{url_for('editRestaurant',rest_id=restaurant.id)}}">
+                  Edit
+                  </a>
+                  <a href="{{ url_for('deleteRestaurant', restaurant_id=restaurant.id) }}">Delete</a>
+                  {%endif%}
+                  <hr>
+              </div>
+          </div>
+          {% endfor %}
+    </div>
+	  {% else %}
+	 	   <p>no restaurants found</p>
+	  {% endif %}
+</div>	
+{% endblock %}	

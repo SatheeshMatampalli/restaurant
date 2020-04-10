@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% block styles %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/astyles.css')}}">
+{%endblock%}
+
+{% block scripts %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+{%endblock%}
+
+{% block content %}
+{{reserved_tables}}
+{{'2_1' in reserved_tables}}
+	<form accept="#" method="POST">
+		<div class="container">
+			<h2>Select Table in restaurant id  {{restaurant_id}}</h2>
+			<input type="text" name="rest_id" value="{{restaurant_id}}">
+			<div class="card">
+				{%if chairs_2 %}
+				<div class="card-header"><center>2chair Table </center></div>
+				<div class="card-body">
+				<div class="row">
+				{% for indx in range(1,chairs_2+1) %}
+					<div class="col-sm-4 col-lg-4 col-md-4 py-4">
+						
+					<div class="card ">
+						<div class="row ">
+							<div class="col">
+								
+							</div>
+							<div class="col ">
+								
+								
+							</div>
+							<div class="col ">
+								
+							</div>
+						</div>
+						<div class="row myrow" style="padding-top: 50px;">
+							<div class="col">
+								<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+								<label>C</label>
+							</div>
+							<div class="col round">
+								
+									<input type="checkbox" id="ch_chairs2_{{indx}}" name="ch_chairs2_{{indx}}" 
+									 
+									value="OK" {%if '2_'+indx|string() in reserved_tables %}disabled{%endif%} />
+									<label for="ch_chairs2_{{indx}}" style="background-color: {%if '2_'+indx|string() in reserved_tables %}pink{%endif%}"></label>
+							</div>
+							<div class="col ">
+								<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+								<label>C</label>
+							</div>
+						</div>
+						<div class="row myrow">
+							<div class="col ">
+								
+							</div>
+							<div class="col">
+								
+							</div>
+							<div class="col ">
+								
+							</div>
+						</div>
+					</div>
+
+					</div>
+				{% endfor %}
+				</div>
+				</div>
+				{% endif%}
+
+				{%if chairs_3 %}
+					<div class="card-header"><center>3Chair Table  </center></div>
+					<div class="card-body">
+						<div class="row">
+							{% for indx in range(1,chairs_3+1) %}
+							
+								<div class="col-sm-4 col-lg-4 col-md-4 py-4">
+									
+									<div class="card ">
+										<div class="row ">
+											<div class="col">
+												1
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+												
+											</div>
+											<div class="col ">
+												2
+											</div>
+										</div>
+										<div class="row myrow">
+											<div class="col">
+												<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+											</div>
+											<div class="col round">
+													
+													<input type="checkbox" id="ch_chairs3_{{indx}}"
+													name="ch_chairs3_{{indx}}"
+													value="OK" {%if '3_'+indx|string() in reserved_tables %}disabled{%endif%} />
+													<label for="ch_chairs3_{{indx}}" style="background-color: {%if '3_'+indx|string() in reserved_tables %}pink{%endif%}"></label>
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+											</div>
+										</div>
+										<div class="row myrow">
+											<div class="col ">
+												5
+											</div>
+											<div class="col">
+											</div>
+											<div class="col ">
+												6
+											</div>
+										</div>
+									</div>
+
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif%}
+
+				{%if chairs_4 %}
+					<div class="card-header"><center>4Chair Table  </center></div>
+					<div class="card-body">
+						<div class="row">
+							{% for indx in range(1,chairs_4+1) %}
+								<div class="col-sm-4 col-lg-4 col-md-4 py-4">
+									
+									<div class="card ">
+										<div class="row ">
+											<div class="col">
+												
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+												
+											</div>
+											<div class="col ">
+												
+											</div>
+										</div>
+										<div class="row myrow">
+											<div class="col">
+												<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+											</div>
+											<div class="col round">
+												
+													<input type="checkbox" id="ch_chairs4_{{indx}}"
+													name="ch_chairs4_{{indx}}" 
+													value="OK" {%if '4_'+indx|string() in reserved_tables %}disabled{%endif%} />
+													<label for="ch_chairs4_{{indx}}" style="background-color: {%if '4_'+indx|string() in reserved_tables %}pink{%endif%}"></label>
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+											</div>
+										</div>
+										<div class="row myrow">
+											<div class="col ">
+												
+											</div>
+											<div class="col" style="margin-top: 20px;">
+												<img src="{{url_for('static',filename='base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+											</div>
+											<div class="col " >
+												
+											</div>
+										</div>
+									</div>
+									
+								</div>
+
+							{% endfor %}
+						</div>
+					</div>
+				{% endif%}
+
+				{% if chairs_8 %}
+					<div class="card-header"><center>8Chair Table  </center></div>
+					<div class="card-body">
+						<div class="row">
+							{% for indx in range(1,chairs_8+1) %}
+								<div class="col-sm-4 col-lg-4 col-md-4 py-4">
+									
+									<div class="card ">
+										<div class="row ">
+											<div class="col">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+												
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+												
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+												
+											</div>
+										</div>
+										<div class="row myrow">
+											<div class="col">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+											</div>
+											<div class="col round">
+												
+													<input type="checkbox" id="ch_chairs8_{{indx}}"
+													value="OK" />
+													<label for="ch_chairs8_{{indx}}"></label>
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+											</div>
+										</div>
+										<div class="row myrow">
+											<div class="col ">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+												
+											</div>
+											<div class="col">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C3</label>
+											</div>
+											<div class="col ">
+												<img src="{{url_for('static',filename='images/base.png')}}" class="mx-auto d-block">
+												<label>C</label>
+												
+											</div>
+										</div>
+									</div>
+
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif%}
+				
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<center>
+					<input type="datetime-local" name="time">
+					
+   
+					<button type="submit" value="submit" class="btn btn-primary">submit</button>
+				</center>
+			</div>
+		</div>
+	</form>
+{% endblock %}

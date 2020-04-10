@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- <br>
+<table class="table table-dark" style="width: 400px;">
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Table Booking</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Waiter Booking</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>MenuItem Booking</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>MenuItem Booking</td>
+      
+    </tr>
+  </tbody>
+</table> -->
+<div class="container">
+  {{restaurant.name}}
+  <div style="margin-top: 100px;
+    margin-left: 150px;">
+  <div class="card-columns">
+    <a href="{{url_for('reserve',res_id=restaurant.id)}}">
+    <div class="card bg-info">
+      <div class="card-body text-center">
+        <p class="card-text text-dark">Table Reservation</p>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+</div>
+
+{%endblock%}
